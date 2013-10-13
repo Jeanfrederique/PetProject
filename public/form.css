@@ -1,0 +1,21 @@
+div{text-align: center;
+	text-indent: 5px}
+
+#field {
+	border: 1px solid #781351;
+	width: 20em
+}
+
+#submit 
+{
+color: #000;
+background: #ffa20f;
+border: 2px 
+}
+
+.error{
+
+	color: red;
+	display: none;
+
+}
