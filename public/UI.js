@@ -5,11 +5,13 @@ $(document).ready(function(){
 	var UI = function(){
 		return this;
 	}
-
+	var displayEntriesBtnElm;
 	var submitBtnElm;
 	var fName;
 	var lName;
 	var Age;
+	var message;
+	var entryList;
 
 	UI.prototype.init = function(){
 		//console.log('UI -> init()');
@@ -18,10 +20,13 @@ $(document).ready(function(){
 
 		// garb jq elements and save it to vars
 		submitBtnElm = $('#submit');
-		
+		displayEntriesBtnElm = $('#show_all_name');
+		message = $('.message');
+		entryList = $('.db_result');
 		
 		// assign click actions
 		submitBtnElm.click(validate);
+		displayEntriesBtnElm.click(onRenderList);
 	}
 
 	function validate(e){
@@ -58,6 +63,7 @@ $(document).ready(function(){
 		// check errors
 		if(errorsFound === 0){
 			submitForm();
+			displayEntriesBtnElm.show();
 		}
 		console.log("I found " + errorsFound + " errors");
 	}
@@ -76,7 +82,7 @@ $(document).ready(function(){
 			type: "POST",
 			url: "/send/", 
 			data: myData, 
-			success: onRenderList,
+			success: onSuccess,
         	error: function(){
         		console.log('SHIT WE FAILEd');
         	}
@@ -85,16 +91,18 @@ $(document).ready(function(){
 
 	}
 
-	function onFail(){
+	function onSuccess(){
 		console.log('UI -> onFail()');
-
+		message.show();
 		//Display Error to users
 	}
 
 
-	function onRenderList(){
+	function onRenderList(e){
 		console.log('UI -> onRenderList()');
-
+		e.preventDefault();
+		message.hide();
+		entryList.show();
 		//Display Delete button
 		$.get("/get/", function(result){
             console.log("End point data has been received!");
