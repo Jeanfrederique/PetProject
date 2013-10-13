@@ -12,6 +12,8 @@ app.post('/send/', routes.onSend);
 
 app.get('/get/', routes.onGet);
 
+app.get('')
+
 
 app.listen(7070);
 
