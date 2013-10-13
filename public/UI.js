@@ -119,8 +119,15 @@ $(document).ready(function(){
             	}
             };
             div.append(divCollection);
+            var remove = $('#delete');
+            remove.click(removeEntry);
             //console.log(data);
          });
+	}
+
+	function removeEntry(e){
+		e.preventDefault()
+		console.log('Jean');
 	}
 
 	var myUI = new UI();
