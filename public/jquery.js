@@ -11,7 +11,7 @@ $('#submit').click(function(){
 
 $("#delete").click(function(){
 
-	$("#table").hide()
+	$("#table").hide();
 
 })
 

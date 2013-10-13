@@ -78,7 +78,7 @@ $(document).ready(function(){
 			data: myData, 
 			success: onRenderList,
         	error: function(){
-        		console.log('SHIT WE FAILED');
+        		console.log('SHIT WE FAILEd');
         	}
         });
 		// onSuccess renderList();  onFail() renderError();
