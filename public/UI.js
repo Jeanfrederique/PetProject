@@ -5,11 +5,12 @@ $(document).ready(function(){
 	var UI = function(){
 		return this;
 	}
-
+	var display_entriesBtnElm;
 	var submitBtnElm;
 	var fName;
 	var lName;
 	var Age;
+	var success_message;
 
 	UI.prototype.init = function(){
 		//console.log('UI -> init()');
@@ -18,15 +19,15 @@ $(document).ready(function(){
 
 		// garb jq elements and save it to vars
 		submitBtnElm = $('#submit');
-		
-		
+		display_entriesBtnElm = $('#show_all_name').hide();
+		success_message = $('.message').hide();
 		// assign click actions
 		submitBtnElm.click(validate);
+		display_entriesBtnElm.click(onRenderList);
 	}
 
 	function validate(e){
 		//console.log('UI -> validate()');
-
 		var errorsFound = 0;
 		e.preventDefault();
 		var onlyLetters = new RegExp(/^[A-Za-z]+$/);
@@ -58,13 +59,13 @@ $(document).ready(function(){
 		// check errors
 		if(errorsFound === 0){
 			submitForm();
+			success_message.show();
 		}
 		console.log("I found " + errorsFound + " errors");
 	}
 
 	function submitForm(){
 		console.log('UI -> submitForm()');
-
 		//Create ajax to serve endpoint
 		var myData = {
         fname: fName,
@@ -76,26 +77,26 @@ $(document).ready(function(){
 			type: "POST",
 			url: "/send/", 
 			data: myData, 
-			success: onRenderList,
+			success: onSuccess,
         	error: function(){
         		console.log('SHIT WE FAILED');
         	}
         });
-		// onSuccess renderList();  onFail() renderError();
+		
+	}
+
+	function onSuccess(){
+		display_entriesBtnElm.show();
 
 	}
 
-	function onFail(){
-		console.log('UI -> onFail()');
 
-		//Display Error to users
-	}
-
-
-	function onRenderList(){
+	function onRenderList(e){
 		console.log('UI -> onRenderList()');
-
-		//Display Delete button
+		e.preventDefault();
+		//removing success message.
+		success_message.show();
+		//Display entries with delete button
 		$.get("/get/", function(result){
             console.log("End point data has been received!");
             var div= $( "#data" );
@@ -113,6 +114,15 @@ $(document).ready(function(){
             div.append(divCollection);
             //console.log(data);
          });
+	}
+
+	function onDelete (){
+
+		$.get("/delete", function(){
+			
+			
+		})
+
 	}
 
 	var myUI = new UI();

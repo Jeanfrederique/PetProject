@@ -1,21 +1,43 @@
+
 div{text-align: center;
-	text-indent: 5px}
+	text-indent: 5px
+
+}
 
 #field {
 	border: 1px solid #781351;
 	width: 20em
 }
 
-#submit 
-{
+#submit {
 color: #000;
 background: #ffa20f;
-border: 2px 
+border: 20px 
 }
 
 .error{
 
 	color: red;
 	display: none;
+
+}
+#show_all_name{
+	color: #000;
+	margin-right: 50px;
+	text-align: right;
+	background: #ffa20f;
+
+}
+
+.message{
+	margin: 0 0 13px;
+	padding: 10px;
+	border: solid 1px #bd8;
+	
+}
+
+.db_result{
+	color: blue;
+	padding: 5px;
 
 }
