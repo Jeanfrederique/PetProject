@@ -9,7 +9,39 @@ $('#submit').click(function(){
 
 
 
-// $("#delete").click(function(){
+$("#delete").click(function(){
+
+	$("#table").hide();
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 4a8d53045ca54c492e00f2bebc35299f8b5f5138
 
 // 	$("#table").hide()
 

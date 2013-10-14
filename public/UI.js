@@ -79,7 +79,7 @@ $(document).ready(function(){
 			data: myData, 
 			success: onSuccess,
         	error: function(){
-        		console.log('SHIT WE FAILED');
+        		console.log('SHIT WE FAILEd');
         	}
         });
 		
