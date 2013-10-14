@@ -5,25 +5,26 @@ $(document).ready(function(){
 	var UI = function(){
 		return this;
 	}
-	var display_entriesBtnElm;
+	var displayEntriesBtnElm;
 	var submitBtnElm;
 	var fName;
 	var lName;
 	var Age;
-	var success_message;
+	var message;
+	var entryList;
 
 	UI.prototype.init = function(){
 		//console.log('UI -> init()');
 
-		//all the things I need to get started
-
 		// garb jq elements and save it to vars
 		submitBtnElm = $('#submit');
-		display_entriesBtnElm = $('#show_all_name').hide();
-		success_message = $('.message').hide();
+		displayEntriesBtnElm = $('#show_all_name');
+		message = $('.message');
+		entryList = $('.db_result');
+		
 		// assign click actions
 		submitBtnElm.click(validate);
-		display_entriesBtnElm.click(onRenderList);
+		displayEntriesBtnElm.click(onRenderList);
 	}
 
 	function validate(e){
@@ -33,7 +34,7 @@ $(document).ready(function(){
 		var onlyLetters = new RegExp(/^[A-Za-z]+$/);
         var onlyNumbers = new RegExp(/^[0-9]/);
 		
-		// hide all
+		// hide all errors
 		$('.error').hide();
 
 		//grabs all values from form
@@ -59,7 +60,7 @@ $(document).ready(function(){
 		// check errors
 		if(errorsFound === 0){
 			submitForm();
-			success_message.show();
+			displayEntriesBtnElm.show();
 		}
 		console.log("I found " + errorsFound + " errors");
 	}
@@ -82,50 +83,54 @@ $(document).ready(function(){
         		console.log('SHIT WE FAILEd');
         	}
         });
-		
+
 	}
 
 	function onSuccess(){
-		display_entriesBtnElm.show();
-
+		console.log('UI -> onFail()');
+		//display success message to user
+		message.show();
+		
 	}
 
 
-	function onRenderList(e){
+function onRenderList(e){
 		console.log('UI -> onRenderList()');
 		e.preventDefault();
-		//removing success message.
-		success_message.show();
-		//Display entries with delete button
-		$.get("/get/", function(result){
-            console.log("End point data has been received!");
-            var div= $( "#data" );
-            var divCollection = '';
+		message.hide();
+		entryList.show();
+		//Display Delete button
+	$.get("/get/", function(result){
+          console.log("End point data has been received!");
+          var div= $( "#data" );
+          var divCollection = '';
 
-            for(var i=0; i< result.length; i++){
+          for(var i=0; i< result.length; i++){
             	if(i === 0){
             		divCollection += "<table>";
             	}
-                divCollection +="<tr><td>"+ result[i].FirstName + "</td><td></td><td><button id='delete'>delete</button></td></tr>";
+                divCollection +="<tr><td>"+ result[i].LastName + "</td><td></td><td><button class='delete' data-id='"+result[i].id+"'>delete</button></td></tr>"
             	if(i === result.length-1){
-            		divCollection += "</table>";
+            		divCollection += "</table>"
             	}
             };
             div.append(divCollection);
-            //console.log(data);
-         });
-	}
 
-	function onDelete (){
+	$('button.delete').click(function(){
+   		var id = $(this).data('id');//using the id of the firstname as id for the delete button.
+   		var self = this;
+   		console.log(id);
+  			$.post('/delete/', {'id' : id}, function(){
+     		//console.log("delete completed");
+     		$(self).parents("tr").remove();
+   			});
+		});
+   });
+// 	$("button.delete").hover(function(){
+// 	$(this).append("<span>This is not working yet</span>");
+// })
+}
 
-		$.get("/delete", function(){
-			
-			
-		})
 
-	}
-
-	var myUI = new UI();
-	myUI.init();
-
-});
+var myUI = new UI();
+myUI.init();

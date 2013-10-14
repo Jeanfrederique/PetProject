@@ -4,24 +4,27 @@
 	<meta charset="utf-8">
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="UI.js"></script>
+	<script type="text/javascript" src="require.js"></script>
 	<link rel="stylesheet" type="text/css" href="form.css">
 </head>
 
 <body>
-<div>
-	<div>
+
+<div class="firstDiv">
+		<div class="header">Please complete this form by filling out all fields.<br>  All information will remain comfidential</div>
+	<div class="form">	
 	<form id="myForm">
 		<fieldset id="field">
-			<p>First Name: <input type="text" class="element" name="fname" id="fName" /></p><span class="error fname">Enter your damn First name</span>
-			<p>Last Name: <input type="text" class="element" name="lname" id="lName"/></p><span class="error lname">Enter your damn Last name</span>
-			<p> Age: <input type="text" class="element" name="age" id="Age"/></p><span class="error age">Enter your damn Age</span>
+			<p>First Name: <input type="text" class="element" name="fname" id="fName" /></p><span class="error fname">Please enter your First name</span>
+			<p>Last Name: <input type="text" class="element" name="lname" id="lName"/></p><span class="error lname">Please enter your Last name</span>
+			<p> Age: <input type="text" class="element" name="age" id="Age"/></p><span class="error age">Please enter your Age</span>
 			<div><input type="submit" id="submit"/>
 				<input type="submit" id="show_all_name" value="Display All Entries"></div>
-
 		</fieldset>
+			<div class="img"><IMG SRC="http://www.aformfiller.com/images/fotolia/Fotolia_1966676_XS.jpg" ALT="some text" WIDTH=150 HEIGHT=150></div>
 	</form>
 	</div>
-	<div class="message">Your entry was submitted successfully.</div>
+<div class="message">Your entry was submitted successfully.</div>
 </div>
 
 <div id="data" class="db_result">

@@ -3,6 +3,9 @@ div{text-align: center;
 	text-indent: 5px
 
 }
+.firstDiv{
+	
+}
 
 #field {
 	border: 1px solid #781351;
@@ -12,7 +15,15 @@ div{text-align: center;
 #submit {
 color: #000;
 background: #ffa20f;
-border: 20px 
+border: 20px;
+}
+
+#show_all_name{
+	color: #000;
+	margin-right: 50px;
+	text-align: right;
+	background: #ffa20f;
+	display: none;
 }
 
 .error{
@@ -21,23 +32,32 @@ border: 20px
 	display: none;
 
 }
-#show_all_name{
-	color: #000;
-	margin-right: 50px;
-	text-align: right;
-	background: #ffa20f;
-
-}
 
 .message{
 	margin: 0 0 13px;
 	padding: 10px;
 	border: solid 1px #bd8;
-	
+	display: none;
 }
 
 .db_result{
 	color: blue;
-	padding: 5px;
+	padding: 20px;
+	display: none;
 
+}
+
+.myForm .img {
+    height:100px;
+    width:100px;
+    border-radius:5px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Verdana, Arial, Sans-Serif;
+    margin-right:5px;
+}
+
+.header{
+	display: none;
 }
