@@ -113,17 +113,18 @@ $(document).ready(function(){
             	if(i === 0){
             		divCollection += "<table>";
             	}
-                divCollection +="<tr><td>"+ result[i].FirstName + "</td><td></td><td><button id='delete'>delete</button></td></tr>";
+                divCollection +="<tr><td>"+ result[i].FirstName + "</td><td></td><td><button class='delete' data-id='"+result[i].id+"'>delete</button></td></tr>";
             	if(i === result.length-1){
             		divCollection += "</table>";
             	}
             };
             div.append(divCollection);
-            
-		$('#delete').click(function(){
-   			var firstname = $(this).attr('id');//using the id of the firstname as id for the delete button.
-  			 $.post('/delete/', {'firstname' : firstname}, function(){
-     		 $(this).parent('div').remove(); //hide the entry from the user
+
+		$('button.delete').click(function(){
+   			var id = $(this).data('id');//using the id of the firstname as id for the delete button.
+   			console.log(id);
+  			 $.post('/delete/', {'id' : id}, function(){
+     		 console.log("delete completed");
    });
 });
 

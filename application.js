@@ -12,7 +12,7 @@ app.post('/send/', routes.onSend);
 
 app.get('/get/', routes.onGet);
 
-app.get('/delete/', routes.onDelete);
+app.post('/delete/', routes.onDelete);
 
 
 app.listen(7070);
