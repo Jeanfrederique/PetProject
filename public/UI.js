@@ -80,57 +80,56 @@ $(document).ready(function(){
 			data: myData, 
 			success: onSuccess,
         	error: function(){
-        		console.log('SHIT WE FAILEd');
+      
         	}
         });
 
 	}
 
 	function onSuccess(){
-		console.log('UI -> onFail()');
+		console.log('UI -> onSuccess()');
 		//display success message to user
 		message.show();
 		
 	}
 
-
-function onRenderList(e){
+	function onRenderList(e){
 		console.log('UI -> onRenderList()');
 		e.preventDefault();
 		message.hide();
 		entryList.show();
 		//Display Delete button
-	$.get("/get/", function(result){
-          console.log("End point data has been received!");
-          var div= $( "#data" );
-          var divCollection = '';
+		$.get("/get/", function(result){
+			console.log("End point data has been received!");
+			var div= $( "#data" );
+			var divCollection = '';
 
-          for(var i=0; i< result.length; i++){
-            	if(i === 0){
-            		divCollection += "<table>";
-            	}
-                divCollection +="<tr><td>"+ result[i].LastName + "</td><td></td><td><button class='delete' data-id='"+result[i].id+"'>delete</button></td></tr>"
-            	if(i === result.length-1){
-            		divCollection += "</table>"
-            	}
-            };
-            div.append(divCollection);
+			for(var i=0; i< result.length; i++){
+				if(i === 0){
+					divCollection += "<table>";
+				}
+			    divCollection +="<tr><td>"+ result[i].LastName + "</td><td></td><td><button class='delete' data-id='"+result[i].id+"'>delete</button></td></tr>"
+				if(i === result.length-1){
+					divCollection += "</table>"
+				}
+			};
+			div.append(divCollection);
 
-	$('button.delete').click(function(){
-   		var id = $(this).data('id');//using the id of the firstname as id for the delete button.
-   		var self = this;
-   		console.log(id);
-  			$.post('/delete/', {'id' : id}, function(){
-     		//console.log("delete completed");
-     		$(self).parents("tr").remove();
-   			});
+			$('button.delete').click(function(){
+		   		var id = $(this).data('id');//using the id of the firstname as id for the delete button.
+		   		var self = this;
+
+		  		$.post('/delete/', {'id' : id}, function(){
+		     		//console.log("delete completed");
+		     		$(self).parents("tr").remove();
+		   		});
+		   	});
+			// 	$("button.delete").hover(function(){
+			// 	$(this).append("<span>This is not working yet</span>");
 		});
-   });
-// 	$("button.delete").hover(function(){
-// 	$(this).append("<span>This is not working yet</span>");
-// })
-}
+	};
 
+	var myUI = new UI();
+	myUI.init();
 
-var myUI = new UI();
-myUI.init();
+});
