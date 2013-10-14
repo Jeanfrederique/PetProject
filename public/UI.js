@@ -120,13 +120,15 @@ $(document).ready(function(){
             };
             div.append(divCollection);
 
-		$('button.delete').click(function(){
-   			var id = $(this).data('id');//using the id of the firstname as id for the delete button.
-   			console.log(id);
-  			 $.post('/delete/', {'id' : id}, function(){
-     		 console.log("delete completed");
-   });
-});
+	$('button.delete').click(function(){
+   		var id = $(this).data('id');//using the id of the firstname as id for the delete button.
+   		var self = this;
+   		console.log(id);
+  		$.post('/delete/', {'id' : id}, function(){
+     	console.log("delete completed");
+     	$(self).parent("tr").remove();
+   		});
+		});
 
             // var remove = $('#delete');
             // remove.click(removeEntry);
