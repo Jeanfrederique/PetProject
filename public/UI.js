@@ -119,16 +119,24 @@ $(document).ready(function(){
             	}
             };
             div.append(divCollection);
-            var remove = $('#delete');
-            remove.click(removeEntry);
+            
+		$('#delete').click(function(){
+   			var firstname = $(this).attr('id');//using the id of the firstname as id for the delete button.
+  			 $.post('/delete/', {'firstname' : firstname}, function(){
+     		 $(this).parent('div').remove(); //hide the entry from the user
+   });
+});
+
+            // var remove = $('#delete');
+            // remove.click(removeEntry);
             //console.log(data);
          });
 	}
 
-	function removeEntry(e){
-		e.preventDefault()
-		console.log('Jean');
-	}
+	// function removeEntry(e){
+	// 	e.preventDefault()
+	// 	console.log('Jean');
+	// }
 
 	var myUI = new UI();
 	myUI.init();
