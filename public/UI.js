@@ -126,14 +126,10 @@ $(document).ready(function(){
    		console.log(id);
   		$.post('/delete/', {'id' : id}, function(){
      	console.log("delete completed");
-     	$(self).parent("tr").remove();
+     	$(self).parents("tr").remove();
    		});
-		});
-
-            // var remove = $('#delete');
-            // remove.click(removeEntry);
-            //console.log(data);
-         });
+	});
+   });
 	}
 
 	// function removeEntry(e){
