@@ -8,6 +8,8 @@ This is just a small project i've been working on where a user enters data into 
 
 Running Locally
 
+Clone: https://github.com/Jeanfrederique/PetProject.git
+
 With Node.js installed, fetch the dependencies:
 express.js
 mysql
