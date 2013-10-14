@@ -111,9 +111,9 @@ function onRenderList(e){
             	if(i === 0){
             		divCollection += "<table>";
             	}
-                divCollection +="<tr><td>"+ result[i].LastName + "</td><td></td><td><button class='delete' data-id='"+result[i].id+"'>delete</button></td></tr>";
+                divCollection +="<tr><td>"+ result[i].LastName + "</td><td></td><td><button class='delete' data-id='"+result[i].id+"'>delete</button></td></tr>"
             	if(i === result.length-1){
-            		divCollection += "</table>";
+            		divCollection += "</table>"
             	}
             };
             div.append(divCollection);
@@ -128,6 +128,9 @@ function onRenderList(e){
    			});
 		});
    });
+// 	$("button.delete").hover(function(){
+// 	$(this).append("<span>This is not working yet</span>");
+// })
 }
 
 

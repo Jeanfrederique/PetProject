@@ -2,52 +2,11 @@ $(document).ready(function() {
 
 $( "#fName").focus();
 
-$('#submit').click(function(){ 
-	$('#delete').show(); 
-
-});	
-
-
-
-$("#delete").click(function(){
-
-	$("#table").hide();
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ // $('div').click(function() {
+ //       $(this).toggle(1000);
+ //   }); 
+ 
+ $(".firstDiv .header").fadeIn( 1000);
+ 
 
 });
