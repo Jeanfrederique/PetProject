@@ -10,11 +10,13 @@ Running Locally
 
 Clone: https://github.com/Jeanfrederique/PetProject.git
 
-With Node.js installed, fetch the dependencies:
-express.js
-mysql
-
 npm install
+
+Init your database:
+CREATE DATABASE ClientTesting
+
+run the file init.sql
+
 then run:
 
 node application.js 

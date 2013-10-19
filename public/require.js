@@ -6,7 +6,7 @@ $( "#fName").focus();
  //       $(this).toggle(1000);
  //   }); 
  
- $(".firstDiv .header").fadeIn( 1000);
+ $(".firstDiv .header").fadeIn( 10000);
  
 
 });

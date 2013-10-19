@@ -1,0 +1,18 @@
+{
+	"name": "PetProject",
+	"description": "Form that send data to mysql and back",
+	"version": "0.0.1",
+	"private": false,
+	"homepage": "https://github.com/Jeanfrederique/PetProject",
+ 	"author": "Jean",
+
+	"repository": "https://github.com/Jeanfrederique/PetProject",
+	"engines": {
+		"node": ">=0.8.x"
+	},
+	"dependencies": {
+		"mysql": ">=2.0.0-alpha9",
+		"express": "~3.3.4"
+	}
+
+}
