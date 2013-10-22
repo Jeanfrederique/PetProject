@@ -1,1 +1,2 @@
-web: node application.js
+touch Procfile
+echo 'web: node application.js' >> Procfile
