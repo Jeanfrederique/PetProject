@@ -15,5 +15,7 @@ app.get('/get/', routes.onGet);
 app.post('/delete/', routes.onDelete);
 
 
-app.listen(7070);
-
+//app.listen(7070);
+app.listen(process.env.PORT || 7070, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
